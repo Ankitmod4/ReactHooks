@@ -1,17 +1,18 @@
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useEffect } from 'react'
 import UseRef from './UseRef'
 import Prop from './Prop'
+import UseContextApp from './UseContextApp'
+const data = createContext();
 
 function App() {
  
-  
   const [count, setCount] = useState(0)
   const [minus, setminus] = useState(0)
-  
+  let name = "ankit";
   const increment = () => {  
     setCount(count + 1);
  }
@@ -35,6 +36,9 @@ function App() {
       Subtraction:{minus}
       <UseRef />
       <Prop count={count} />
+      <data.Provider value={count}>
+        <UseContextApp />
+        </data.Provider>
       </>
       
    
@@ -42,3 +46,4 @@ function App() {
 }
 
 export default App
+export {data}
